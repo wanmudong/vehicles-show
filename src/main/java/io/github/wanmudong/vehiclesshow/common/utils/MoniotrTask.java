@@ -1,8 +1,7 @@
-package io.github.wanmudong.vehiclesshow.utils;
+package io.github.wanmudong.vehiclesshow.common.utils;
 
 import io.github.wanmudong.vehiclesshow.vehicleInfo.entity.VehicleInfo;
 import io.github.wanmudong.vehiclesshow.vehicleInfo.service.IVehicleInfoService;
-import io.github.wanmudong.vehiclesshow.vehicleInfo.web.VehicleInfoController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;

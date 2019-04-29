@@ -1,4 +1,4 @@
-package io.github.wanmudong.vehiclesshow.model;
+package io.github.wanmudong.vehiclesshow.common.model;
 
 
 import lombok.Data;

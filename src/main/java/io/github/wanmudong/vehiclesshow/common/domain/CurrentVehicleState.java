@@ -1,4 +1,4 @@
-package io.github.wanmudong.vehiclesshow.domain;
+package io.github.wanmudong.vehiclesshow.common.domain;
 
 import io.github.wanmudong.vehiclesshow.vehicleInfo.entity.VehicleInfo;
 import lombok.Data;
@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 
-import static io.github.wanmudong.vehiclesshow.utils.timeUtil.dateTime;
+import static io.github.wanmudong.vehiclesshow.common.utils.timeUtil.dateTime;
 
 /**
  * @author ：wanmudong

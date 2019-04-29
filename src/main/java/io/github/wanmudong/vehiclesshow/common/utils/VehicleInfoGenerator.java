@@ -1,4 +1,4 @@
-package io.github.wanmudong.vehiclesshow.utils;
+package io.github.wanmudong.vehiclesshow.common.utils;
 
 
 

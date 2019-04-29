@@ -2,11 +2,11 @@ package io.github.wanmudong.vehiclesshow.vehicleInfo.web;
 
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import io.github.wanmudong.vehiclesshow.domain.CurrentVehicleState;
-import io.github.wanmudong.vehiclesshow.model.ResultVO;
-import io.github.wanmudong.vehiclesshow.utils.ApplicationContextProvider;
-import io.github.wanmudong.vehiclesshow.utils.MoniotrTask;
-import io.github.wanmudong.vehiclesshow.utils.MyPageInfo;
+import io.github.wanmudong.vehiclesshow.common.domain.CurrentVehicleState;
+import io.github.wanmudong.vehiclesshow.common.model.ResultVO;
+import io.github.wanmudong.vehiclesshow.common.utils.ApplicationContextProvider;
+import io.github.wanmudong.vehiclesshow.common.utils.MoniotrTask;
+import io.github.wanmudong.vehiclesshow.common.utils.MyPageInfo;
 import io.github.wanmudong.vehiclesshow.vehicleInfo.entity.VehicleInfo;
 import io.github.wanmudong.vehiclesshow.vehicleInfo.service.IVehicleInfoService;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;

@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.toolkit.StringUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import io.github.wanmudong.vehiclesshow.utils.MyPageInfo;
+import io.github.wanmudong.vehiclesshow.common.utils.MyPageInfo;
 import io.github.wanmudong.vehiclesshow.vehicleInfo.entity.VehicleInfo;
 import io.github.wanmudong.vehiclesshow.vehicleInfo.mapper.VehicleInfoMapper;
 import io.github.wanmudong.vehiclesshow.vehicleInfo.service.IVehicleInfoService;

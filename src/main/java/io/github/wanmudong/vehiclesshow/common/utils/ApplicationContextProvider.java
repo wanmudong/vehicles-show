@@ -1,4 +1,4 @@
-package io.github.wanmudong.vehiclesshow.utils;
+package io.github.wanmudong.vehiclesshow.common.utils;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
