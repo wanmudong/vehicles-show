@@ -4,7 +4,7 @@ package io.github.wanmudong.vehiclesshow.model;
 import lombok.Data;
 
 @Data
-public class ResultVo {
+public class ResultVO {
     /**
      * 处理是否成功
      */
@@ -18,8 +18,8 @@ public class ResultVo {
      */
     Object data;
 
-    public static ResultVo success(Object data){
-        ResultVo resultVo = new ResultVo();
+    public static ResultVO success(Object data){
+        ResultVO resultVo = new ResultVO();
         resultVo.setSuccess(true);
         resultVo.setLogin(true);
         resultVo.setData(data);
