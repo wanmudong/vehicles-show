@@ -48,7 +48,7 @@ public class MoniotrTask extends Thread {
         VehicleInfoGenerator vig = new VehicleInfoGenerator();
         VehicleInfo info = vig.generator();
         iVehicleInfoService.insert(info);
-        logger.info("线程:"+Thread.currentThread().getName()+"运行中.....");
+        logger.info("正在插入车辆信息，当前车辆VIN号为："+info.getVin());
         latch.countDown();
     }
 
