@@ -1,24 +1,22 @@
 package io.github.wanmudong.vehiclesshow.vehicleInfo.web;
 
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import io.github.wanmudong.vehiclesshow.domain.CurrentVehicleState;
 import io.github.wanmudong.vehiclesshow.model.ResultVO;
 import io.github.wanmudong.vehiclesshow.utils.ApplicationContextProvider;
 import io.github.wanmudong.vehiclesshow.utils.MoniotrTask;
 import io.github.wanmudong.vehiclesshow.utils.MyPageInfo;
-import io.github.wanmudong.vehiclesshow.utils.VehicleInfoGenerator;
 import io.github.wanmudong.vehiclesshow.vehicleInfo.entity.VehicleInfo;
 import io.github.wanmudong.vehiclesshow.vehicleInfo.service.IVehicleInfoService;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import javax.xml.transform.Result;
-import java.util.LinkedHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -78,15 +76,24 @@ public class VehicleInfoController {
      */
     @RequestMapping(value = "/list")
     public ResultVO list(String vin,@RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "10")int pageSize){
-        MyPageInfo myPageInfo = iVehicleInfoService.listVehicles(vin,pageNo,pageSize);
-        return ResultVO.success(myPageInfo);
+        try {
+            MyPageInfo myPageInfo = iVehicleInfoService.listVehicles(vin,pageNo,pageSize);
+            return ResultVO.success(myPageInfo);
+        }catch (Exception e){
+            return ResultVO.fail("访问失败，请检查！");
+        }
     }
 
     @RequestMapping(value = "/detail")
-    public ResultVO detail(){
-        LinkedHashMap<Integer,Object> map = new LinkedHashMap<>();
-        return ResultVO.success(map);
-    }
+    public ResultVO detail(String vin){
+        try {
+            VehicleInfo vi = iVehicleInfoService.selectOne(new EntityWrapper<VehicleInfo>().eq("vin", vin));
+            CurrentVehicleState cvs = CurrentVehicleState.getRandom(vi);
+            return ResultVO.success(cvs);
+        }catch (Exception e){
+            return ResultVO.fail("访问失败，请检查！");
+        }
 
+    }
 
 }
