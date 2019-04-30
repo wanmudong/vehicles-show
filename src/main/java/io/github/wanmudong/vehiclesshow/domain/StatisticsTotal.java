@@ -1,5 +1,6 @@
 package io.github.wanmudong.vehiclesshow.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.util.Random;
@@ -12,6 +13,7 @@ import java.util.Random;
  * @version: $
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class StatisticsTotal {
 
     int vehicleTotalNum;
@@ -30,9 +32,13 @@ public class StatisticsTotal {
         Integer vehicleTotalNum = 10052;
         Integer offlineTotalNum = 900+random.nextInt(100);
         Integer onlineTotalNum = vehicleTotalNum-offlineTotalNum;
-        Integer malfunctionTotalNum =  400+random.nextInt(100);
+        Integer malfunctionTotalNum =  40+random.nextInt(20);
         StatisticsTotal st = new StatisticsTotal(vehicleTotalNum,offlineTotalNum,
                 onlineTotalNum,malfunctionTotalNum );
         return st;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getRandomStatistics());
     }
 }
