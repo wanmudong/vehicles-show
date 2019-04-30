@@ -8,9 +8,9 @@ package io.github.wanmudong.vehiclesshow.common.enums;
  * @version: $
  */
 public enum  VehicleModel {
-    RUIHU_5(1,"瑞虎5"),
-    JIETU_7(2,"捷途7"),
-    QQ(3,"QQ");
+    RUIHU_5(0,"瑞虎5"),
+    JIETU_7(1,"捷途7"),
+    QQ(2,"QQ");
     private Integer value;
     private String desc;
 

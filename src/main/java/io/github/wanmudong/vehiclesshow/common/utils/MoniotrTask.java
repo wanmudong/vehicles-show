@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import javax.management.monitor.Monitor;
+import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -44,10 +45,16 @@ public class MoniotrTask extends Thread {
 
     @Override
     public void run() {
-        VehicleInfoGenerator vig = new VehicleInfoGenerator();
-        VehicleInfo info = vig.generator();
-        iVehicleInfoService.insert(info);
-        logger.info("正在插入车辆信息，当前车辆VIN号为："+info.getVin());
+        //一共用时98秒
+        ArrayList<VehicleInfo> list = new ArrayList<>();
+        for (int i = 0; i < 30; i++) {
+            VehicleInfoGenerator vig = new VehicleInfoGenerator();
+            VehicleInfo info = vig.generator();
+            list.add(info);
+        }
+
+        iVehicleInfoService.insertBatch(list);
+        logger.info("正在批量插入车辆信息");
         latch.countDown();
     }
 

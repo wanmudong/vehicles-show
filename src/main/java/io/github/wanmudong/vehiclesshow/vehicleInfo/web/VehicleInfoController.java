@@ -40,7 +40,7 @@ public class VehicleInfoController {
 
     private static Logger logger = LoggerFactory.getLogger(VehicleInfoController.class);
 
-    static final CountDownLatch countDownLatch = new CountDownLatch(12000);
+    static final CountDownLatch countDownLatch = new CountDownLatch(400);
 
 
     @RequestMapping(value = "/generate")
@@ -55,7 +55,7 @@ public class VehicleInfoController {
                 30,30,30, TimeUnit.SECONDS,new LinkedBlockingDeque<>(12000),threadFactory);
 
         long startTime = System.currentTimeMillis();
-        for (int i = 0; i < 12000; i++) {
+        for (int i = 0; i < 400; i++) {
             MoniotrTask m = ApplicationContextProvider.getBean("mTask", MoniotrTask.class);
             m.setLatch(countDownLatch);
             poolTaskExecutor.execute(m);
@@ -65,7 +65,7 @@ public class VehicleInfoController {
         countDownLatch.await();
         long endTime = System.currentTimeMillis();
         logger.info("一共用时"+(endTime-startTime)/1000+"秒");
-        return ResultVO.success("");
+        return ResultVO.success("一共用时"+(endTime-startTime)/1000+"秒");
     }
 
     /**

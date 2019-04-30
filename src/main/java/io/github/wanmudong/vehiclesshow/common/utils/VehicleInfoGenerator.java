@@ -2,6 +2,7 @@ package io.github.wanmudong.vehiclesshow.common.utils;
 
 
 
+import io.github.wanmudong.vehiclesshow.common.domain.UserDistribution;
 import io.github.wanmudong.vehiclesshow.vehicleInfo.entity.VehicleInfo;
 
 import java.util.Random;
@@ -28,7 +29,7 @@ public class VehicleInfoGenerator {
             //车辆所在地区
             int areaNum = random.nextInt(11);
             String area="";
-            if (areaNum<5){
+            if (areaNum<3){
                 area = "安徽";
             }else if(areaNum<6){
                 area = "浙江";
@@ -39,9 +40,9 @@ public class VehicleInfoGenerator {
             }else if (areaNum<9){
                 area = "北京";
             }else {
-                areaNum = random.nextInt(33);
+                areaNum =5+ random.nextInt(28);
 
-                area = "";
+                area = UserDistribution.PROVINCE[areaNum];
             }
 
             //车辆是否在线
