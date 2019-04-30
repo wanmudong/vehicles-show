@@ -1,6 +1,5 @@
-package io.github.wanmudong.vehiclesshow.common.domain;
+package io.github.wanmudong.vehiclesshow.vehicleInfo.entity;
 
-import io.github.wanmudong.vehiclesshow.vehicleInfo.entity.VehicleInfo;
 import lombok.Data;
 
 import java.util.LinkedHashMap;

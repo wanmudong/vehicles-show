@@ -13,32 +13,47 @@ import java.util.Random;
  * @version: $
  */
 @Data
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class StatisticsTotal {
+    ///////////////////////////////
+    /**
+     * 车辆总数
+     */
+    private int vehicleTotalNum;
+    /**
+     * 离线总数
+     */
+    private int offlineTotalNum;
+    /**
+     * 在线总数
+     */
+    private int onlineTotalNum;
+    /**
+     * 故障总数
+     */
+    private int malfunctionTotalNum;
+    /////////////////////////////////
 
-    int vehicleTotalNum;
-    int offlineTotalNum;
-    int onlineTotalNum;
-    int malfunctionTotalNum;
 
-    public StatisticsTotal(int vehicleTotalNum, int offlineTotalNum, int onlineTotalNum, int malfunctionTotalNum) {
-        this.vehicleTotalNum = vehicleTotalNum;
-        this.offlineTotalNum = offlineTotalNum;
-        this.onlineTotalNum = onlineTotalNum;
-        this.malfunctionTotalNum = malfunctionTotalNum;
-    }
+
     public static StatisticsTotal getRandomStatistics(){
+        StatisticsTotal st = new StatisticsTotal();
         Random random = new Random();
-        Integer vehicleTotalNum = 10052;
+
+
+        Integer vehicleTotalNum = 12000;
+        st.setVehicleTotalNum(vehicleTotalNum);
         Integer offlineTotalNum = 900+random.nextInt(100);
+        st.setOfflineTotalNum(offlineTotalNum);
         Integer onlineTotalNum = vehicleTotalNum-offlineTotalNum;
-        Integer malfunctionTotalNum =  40+random.nextInt(20);
-        StatisticsTotal st = new StatisticsTotal(vehicleTotalNum,offlineTotalNum,
-                onlineTotalNum,malfunctionTotalNum );
+        st.setOnlineTotalNum(onlineTotalNum);
+        Integer malfunctionTotalNum =  9000+random.nextInt(500);
+        st.setMalfunctionTotalNum(malfunctionTotalNum);
+
+
         return st;
     }
 
-    public static void main(String[] args) {
-        System.out.println(getRandomStatistics());
-    }
+//    public static void main(String[] args) {
+//        System.out.println(getRandomStatistics());
+//    }
 }

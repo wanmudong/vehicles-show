@@ -2,7 +2,7 @@ package io.github.wanmudong.vehiclesshow.vehicleInfo.web;
 
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import io.github.wanmudong.vehiclesshow.common.domain.CurrentVehicleState;
+import io.github.wanmudong.vehiclesshow.vehicleInfo.entity.CurrentVehicleState;
 import io.github.wanmudong.vehiclesshow.common.model.ResultVO;
 import io.github.wanmudong.vehiclesshow.common.utils.ApplicationContextProvider;
 import io.github.wanmudong.vehiclesshow.common.utils.MoniotrTask;
