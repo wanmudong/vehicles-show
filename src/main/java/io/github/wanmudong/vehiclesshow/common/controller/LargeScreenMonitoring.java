@@ -1,7 +1,7 @@
-package io.github.wanmudong.vehiclesshow.controller;
+package io.github.wanmudong.vehiclesshow.common.controller;
 
-import io.github.wanmudong.vehiclesshow.domain.StatisticsTotal;
-import io.github.wanmudong.vehiclesshow.model.ResultVo;
+import io.github.wanmudong.vehiclesshow.common.domain.StatisticsTotal;
+import io.github.wanmudong.vehiclesshow.common.model.ResultVO;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,10 +14,10 @@ import java.util.Map;
 public class LargeScreenMonitoring {
 
     @RequestMapping()
-    public ResultVo getTotalData(){
+    public ResultVO getTotalData(){
         Map<String,Object> totalMap = new HashMap<>();
 
         totalMap.put("total", StatisticsTotal.getRandomStatistics());
-        return ResultVo.success(totalMap);
+        return ResultVO.success(totalMap);
     }
 }

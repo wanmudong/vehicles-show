@@ -1,4 +1,4 @@
-package io.github.wanmudong.vehiclesshow.domain;
+package io.github.wanmudong.vehiclesshow.common.domain;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

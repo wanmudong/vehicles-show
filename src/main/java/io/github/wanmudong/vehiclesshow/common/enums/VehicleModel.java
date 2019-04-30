@@ -1,4 +1,4 @@
-package io.github.wanmudong.vehiclesshow.enums;
+package io.github.wanmudong.vehiclesshow.common.enums;
 
 /**
  * @author ：wanmudong
