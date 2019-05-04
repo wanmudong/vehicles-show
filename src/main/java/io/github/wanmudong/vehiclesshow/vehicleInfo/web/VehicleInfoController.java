@@ -7,6 +7,7 @@ import io.github.wanmudong.vehiclesshow.common.model.ResultVO;
 import io.github.wanmudong.vehiclesshow.common.utils.ApplicationContextProvider;
 import io.github.wanmudong.vehiclesshow.common.utils.MoniotrTask;
 import io.github.wanmudong.vehiclesshow.common.utils.MyPageInfo;
+import io.github.wanmudong.vehiclesshow.vehicleInfo.entity.HistoryVehicleState;
 import io.github.wanmudong.vehiclesshow.vehicleInfo.entity.VehicleInfo;
 import io.github.wanmudong.vehiclesshow.vehicleInfo.service.IVehicleInfoService;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
@@ -90,6 +91,17 @@ public class VehicleInfoController {
             VehicleInfo vi = iVehicleInfoService.selectOne(new EntityWrapper<VehicleInfo>().eq("vin", vin));
             CurrentVehicleState cvs = CurrentVehicleState.getRandom(vi);
             return ResultVO.success(cvs);
+        }catch (Exception e){
+            return ResultVO.fail("访问失败，请检查！");
+        }
+
+    }
+    @RequestMapping(value = "/history")
+    public ResultVO history(String vin){
+        try {
+            VehicleInfo vi = iVehicleInfoService.selectOne(new EntityWrapper<VehicleInfo>().eq("vin", vin));
+            HistoryVehicleState hvs = HistoryVehicleState.getRandom(vi);
+            return ResultVO.success(hvs);
         }catch (Exception e){
             return ResultVO.fail("访问失败，请检查！");
         }
