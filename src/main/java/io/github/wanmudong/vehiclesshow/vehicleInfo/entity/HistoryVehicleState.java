@@ -82,7 +82,7 @@ public class HistoryVehicleState {
      * 胎压  左前
      */
     private Map<String,Double> tirePressureRightRear;
-    
+
     @JsonIgnore
     public static final String[]TIME={"08:00","09:00","10:00","11:00",
             "12:00","13:00","14:00",
@@ -133,21 +133,21 @@ public class HistoryVehicleState {
             int engineTemperature = 80 + random.nextInt(10);
             engineWaterTemperatureMap.put(TIME[i],engineTemperature);
 
-            double tirePressure = (24 + random.nextInt(3))/10.0;
+            double tirePressure = (random.nextInt(45))/10.0;
             tirePressureLeftFrontMap.put(TIME[i],tirePressure);
-            int tireTemperature = 25 + random.nextInt(3);
+            int tireTemperature = 24 + random.nextInt(26);
             tireTemperatureLeftFrontMap.put(TIME[i],tireTemperature);
-            tirePressure = (24 + random.nextInt(3))/10.0;
+             tirePressure = (random.nextInt(45))/10.0;
             tirePressureLeftRearMap.put(TIME[i],tirePressure);
-            tireTemperature = 25 + random.nextInt(3);
+             tireTemperature = 24 + random.nextInt(26);
             tireTemperatureLeftRearMap.put(TIME[i],tireTemperature);
-            tirePressure = (24 + random.nextInt(3))/10.0;
+            tirePressure = (random.nextInt(45))/10.0;
             tirePressureRightFrontMap.put(TIME[i],tirePressure);
-            tireTemperature = 25 + random.nextInt(3);
+            tireTemperature = 24 + random.nextInt(26);
             tireTemperatureRightFrontMap.put(TIME[i],tireTemperature);
-            tirePressure = (24 + random.nextInt(3))/10.0;
+            tirePressure = (random.nextInt(45))/10.0;
             tirePressureRightRearMap.put(TIME[i],tirePressure);
-            tireTemperature = 25 + random.nextInt(3);
+            tireTemperature = 24 + random.nextInt(26);
             tireTemperatureRightRearMap.put(TIME[i],tireTemperature);
         }
         historyVehicleState.setVerticalAcceleration(verticalAccelerationMap);
