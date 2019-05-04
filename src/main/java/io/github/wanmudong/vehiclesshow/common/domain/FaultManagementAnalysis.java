@@ -29,7 +29,7 @@ public class FaultManagementAnalysis {
         int tireSystemFault = 15 + random.nextInt(10);
         typeMap.put(VehicleFault.TIRE_SYSTEM_FAULT.getDesc(),tireSystemFault);
         int brokingSystemFault = 15 + random.nextInt(10);
-        typeMap.put(VehicleFault.ENGINE_SYSTEM_FAULT.getDesc(),brokingSystemFault);
+        typeMap.put(VehicleFault.BROKING_SYSTEM_FAULT.getDesc(),brokingSystemFault);
         int techometerSystemFault = 100 - engineSystemFault - brokingSystemFault - tireSystemFault;
         typeMap.put(VehicleFault.TACHOMETER_SYSTEM_FAULT.getDesc(),techometerSystemFault);
 
