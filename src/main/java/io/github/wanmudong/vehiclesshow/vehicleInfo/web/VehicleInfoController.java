@@ -2,14 +2,11 @@ package io.github.wanmudong.vehiclesshow.vehicleInfo.web;
 
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import io.github.wanmudong.vehiclesshow.vehicleInfo.entity.CurrentVehicleState;
+import io.github.wanmudong.vehiclesshow.vehicleInfo.entity.*;
 import io.github.wanmudong.vehiclesshow.common.model.ResultVO;
 import io.github.wanmudong.vehiclesshow.common.utils.ApplicationContextProvider;
 import io.github.wanmudong.vehiclesshow.common.utils.MoniotrTask;
 import io.github.wanmudong.vehiclesshow.common.utils.MyPageInfo;
-import io.github.wanmudong.vehiclesshow.vehicleInfo.entity.HealthVehicleState;
-import io.github.wanmudong.vehiclesshow.vehicleInfo.entity.HistoryVehicleState;
-import io.github.wanmudong.vehiclesshow.vehicleInfo.entity.VehicleInfo;
 import io.github.wanmudong.vehiclesshow.vehicleInfo.service.IVehicleInfoService;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.slf4j.Logger;
@@ -113,6 +110,17 @@ public class VehicleInfoController {
         try {
             VehicleInfo vi = iVehicleInfoService.selectOne(new EntityWrapper<VehicleInfo>().eq("vin", vin));
             HealthVehicleState hvs = HealthVehicleState.getRandom(vi);
+            return ResultVO.success(hvs);
+        }catch (Exception e){
+            return ResultVO.fail("访问失败，请检查！");
+        }
+
+    }
+    @RequestMapping(value = "/drivenBehavior")
+    public ResultVO drivenBehavior(String vin){
+        try {
+            VehicleInfo vi = iVehicleInfoService.selectOne(new EntityWrapper<VehicleInfo>().eq("vin", vin));
+            DrivingBehavior hvs = DrivingBehavior.getRandom(vi);
             return ResultVO.success(hvs);
         }catch (Exception e){
             return ResultVO.fail("访问失败，请检查！");
