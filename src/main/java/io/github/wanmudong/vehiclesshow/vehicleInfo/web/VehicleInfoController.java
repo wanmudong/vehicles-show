@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -122,6 +123,17 @@ public class VehicleInfoController {
             VehicleInfo vi = iVehicleInfoService.selectOne(new EntityWrapper<VehicleInfo>().eq("vin", vin));
             DrivingBehavior hvs = DrivingBehavior.getRandom(vi);
             return ResultVO.success(hvs);
+        }catch (Exception e){
+            return ResultVO.fail("访问失败，请检查！");
+        }
+
+    }
+    @RequestMapping(value = "/failureAnalysis")
+    public ResultVO failureAnalysis(@RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "10")int pageSize){
+        try {
+            List list = iVehicleInfoService.listVehicles(pageNo,pageSize);
+            FailureAnalysis failureAnalysis = FailureAnalysis.getRandom(list);
+            return ResultVO.success(failureAnalysis);
         }catch (Exception e){
             return ResultVO.fail("访问失败，请检查！");
         }

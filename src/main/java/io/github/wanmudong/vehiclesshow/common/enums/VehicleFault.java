@@ -8,7 +8,7 @@ package io.github.wanmudong.vehiclesshow.common.enums;
  * @version: $
  */
 public enum VehicleFault {
-    ENGINE_SYSTEM_FAULT(1,"发动机系统故障"),
+    ENGINE_SYSTEM_FAULT(0,"发动机系统故障"),
     BROKING_SYSTEM_FAULT(1,"制动系统故障"),
     TIRE_SYSTEM_FAULT(2,"轮胎系统故障"),
     TACHOMETER_SYSTEM_FAULT(3,"转速器系统故障");

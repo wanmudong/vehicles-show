@@ -11,6 +11,8 @@ import io.github.wanmudong.vehiclesshow.vehicleInfo.service.IVehicleInfoService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务实现类
@@ -32,5 +34,14 @@ public class VehicleInfoServiceImpl extends ServiceImpl<VehicleInfoMapper, Vehic
         }
         PageInfo<VehicleInfo> pageInfo = new PageInfo<>(baseMapper.selectList(ew));
         return new MyPageInfo<>(pageInfo);
+    }
+
+    @Override
+    public List listVehicles(int pageNo, int pageSize) {
+        PageHelper.startPage(pageNo,pageSize);
+        EntityWrapper<VehicleInfo> ew = new EntityWrapper<>();
+        ew.orderBy("id");
+        PageInfo<VehicleInfo> pageInfo = new PageInfo<>(baseMapper.selectList(ew));
+        return pageInfo.getList();
     }
 }
