@@ -140,4 +140,35 @@ public class VehicleInfoController {
 
     }
 
+    @RequestMapping(value = "/drivingStyleAnalysis")
+    public ResultVO drivingStyleAnalysis(@RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "10")int pageSize){
+        try {
+            List list = iVehicleInfoService.listVehicles(pageNo,pageSize);
+            DrivingStyle drivingStyle = DrivingStyle.getRandom(list);
+            return ResultVO.success(drivingStyle);
+        }catch (Exception e){
+            return ResultVO.fail("访问失败，请检查！");
+        }
+
+    }
+    @RequestMapping(value = "/drivingStyleAnalysis/province")
+    public ResultVO drivingStyleAnalysisOfProvince(String province){
+        try {
+            /**
+             * 二分之一是安徽，五分之一是浙江，五分之一是江苏，五分之一是上海，五分之一是北京，其余省市分剩下的五分之一
+             */
+            int totalNum = 12000;
+            if ("anHui".equals(province)){
+                totalNum = (int) (totalNum*(0.5));
+            }else {
+                totalNum = (int) (totalNum*(0.2));
+            }
+            DrivingStyle drivingStyle = DrivingStyle.getRandomOfProvince(totalNum);
+            return ResultVO.success(drivingStyle);
+        }catch (Exception e){
+            return ResultVO.fail("访问失败，请检查！");
+        }
+
+    }
+
 }
