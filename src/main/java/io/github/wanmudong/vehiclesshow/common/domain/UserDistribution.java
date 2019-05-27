@@ -78,9 +78,6 @@ public class UserDistribution {
         return ud;
     }
 
-//    public static void main(String[] args) {
-//        System.out.println(UserDistribution.getRandomUserDistribution(StatisticsTotal.getRandomStatistics()));
-//    }
 }
 @Data
 class  UserDistributionOfProvince {
