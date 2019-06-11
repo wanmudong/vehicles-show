@@ -113,6 +113,11 @@ class FaultDistribution{
                 faultMap.put(1,faultOverview.getBrokingSystemFailure());
                 faultMap.put(2,faultOverview.getTireSystemFailure());
                 faultMap.put(3,faultOverview.getAssistantSystemFailure());
+            }else {
+                faultMap.put(0,0);
+                faultMap.put(1,0);
+                faultMap.put(2,0);
+                faultMap.put(3,0);
             }
             faultVehicleMap.put(i,faultMap);
         }

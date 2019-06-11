@@ -10,7 +10,7 @@
     </parent>
     <groupId>io.github.wanmudong</groupId>
     <artifactId>vehicles-show</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>0.0.6-SNAPSHOT</version>
     <name>vehicles-show</name>
     <description>vehicle-show-random-version</description>
 

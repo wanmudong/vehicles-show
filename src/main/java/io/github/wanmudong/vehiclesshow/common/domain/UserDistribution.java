@@ -57,7 +57,7 @@ public class UserDistribution {
         double innerRatio =  ratio/4;
         UserDistribution ud = new UserDistribution();
 
-        int [] vehicleNum = {3011,2492,1555,1549,1358,2032};
+        int [] vehicleNum = {3011,2492,1555,1310,1060,1260,1309};
 
         for (int i = 0; i < PROVINCE.length; i++) {
 

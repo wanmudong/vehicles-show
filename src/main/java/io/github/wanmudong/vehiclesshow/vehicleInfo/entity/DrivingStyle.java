@@ -80,7 +80,15 @@ class StyleDistribution{
                 styleMap.put("smooth",Math.floor(totalNum*smooth));
                 styleMap.put("general",Math.floor(totalNum*general));
                 styleVehicleMap.put(i,styleMap);
-              }
+              }else {
+                Map<String,Integer> styleMap = new HashMap<>(16);
+
+                styleMap.put("impulse",0);
+                styleMap.put("smooth",0);
+                styleMap.put("general",0);
+                styleVehicleMap.put(i,styleMap);
+            }
+
         }
         styleDistribution.setStyleMap(styleVehicleMap);
         return styleDistribution;

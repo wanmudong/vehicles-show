@@ -34,14 +34,15 @@ public class VehicleInfoServiceImpl extends ServiceImpl<VehicleInfoMapper, Vehic
         if (StringUtils.isNotEmpty(vin)){
             ew.eq("vin",vin);
         }
-        List<VehicleInfo>list = baseMapper.selectList(ew);
+
+        PageInfo<VehicleInfo> pageInfo = new PageInfo<>(baseMapper.selectList(ew));
+        List<VehicleInfo>list = pageInfo.getList();
         List<VehicleInfoDTO> infoDTOList = new ArrayList<>();
         for(VehicleInfo vehicleInfo:list){
             VehicleInfoDTO vehicleInfoDTO = vehicleInfo.doTODto();
             infoDTOList.add(vehicleInfoDTO);
         }
-        PageInfo<VehicleInfoDTO> pageInfo = new PageInfo<>(infoDTOList);
-        return new MyPageInfo<>(pageInfo);
+        return new MyPageInfo<>(pageInfo,infoDTOList);
     }
 
     @Override
@@ -49,14 +50,15 @@ public class VehicleInfoServiceImpl extends ServiceImpl<VehicleInfoMapper, Vehic
         PageHelper.startPage(pageNo,pageSize);
         EntityWrapper<VehicleInfo> ew = new EntityWrapper<>();
         ew.orderBy("id");
-        List<VehicleInfo>list = baseMapper.selectList(ew);
+
+        PageInfo<VehicleInfo> pageInfo = new PageInfo<>(baseMapper.selectList(ew));
+        List<VehicleInfo>list =pageInfo.getList();
         List<VehicleInfoDTO> infoDTOList = new ArrayList<>();
         for(VehicleInfo vehicleInfo:list){
             VehicleInfoDTO vehicleInfoDTO = vehicleInfo.doTODto();
             infoDTOList.add(vehicleInfoDTO);
         }
-        PageInfo<VehicleInfoDTO> pageInfo = new PageInfo<>(infoDTOList);
-        return pageInfo.getList();
+        return infoDTOList;
     }
 
     @Override
@@ -67,13 +69,13 @@ public class VehicleInfoServiceImpl extends ServiceImpl<VehicleInfoMapper, Vehic
         if (StringUtils.isNotEmpty(province)){
             ew.eq("area",province);
         }
-        List<VehicleInfo>list = baseMapper.selectList(ew);
+        PageInfo<VehicleInfo> pageInfo = new PageInfo<>(baseMapper.selectList(ew));
+        List<VehicleInfo>list =pageInfo.getList();
         List<VehicleInfoDTO> infoDTOList = new ArrayList<>();
         for(VehicleInfo vehicleInfo:list){
             VehicleInfoDTO vehicleInfoDTO = vehicleInfo.doTODto();
             infoDTOList.add(vehicleInfoDTO);
         }
-        PageInfo<VehicleInfoDTO> pageInfo = new PageInfo<>(infoDTOList);
-        return pageInfo.getList();
+        return infoDTOList;
     }
 }
