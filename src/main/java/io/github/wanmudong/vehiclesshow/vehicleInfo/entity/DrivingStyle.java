@@ -70,14 +70,17 @@ class StyleDistribution{
         Map<Integer,Map> styleVehicleMap = new HashMap<>(16);
         Random random = new Random();
         for (int i = 0; i < VEHICLE_MODELS_NUM; i++) {
-            Map<String,Double> styleMap = new HashMap<>(16);
-            double impulse = (1+random.nextInt(2))/10.0;
-            double smooth = impulse+random.nextInt(4)/10.0;
-            double general = 1-impulse-smooth;
-            styleMap.put("impulse",Math.floor(totalNum*impulse));
-            styleMap.put("smooth",Math.floor(totalNum*smooth));
-            styleMap.put("general",Math.floor(totalNum*general));
-            styleVehicleMap.put(i,styleMap);
+            if (i == 0){
+
+                Map<String,Double> styleMap = new HashMap<>(16);
+                double impulse = (1+random.nextInt(2))/10.0;
+                double smooth = impulse+random.nextInt(4)/10.0;
+                double general = 1-impulse-smooth;
+                styleMap.put("impulse",Math.floor(totalNum*impulse));
+                styleMap.put("smooth",Math.floor(totalNum*smooth));
+                styleMap.put("general",Math.floor(totalNum*general));
+                styleVehicleMap.put(i,styleMap);
+              }
         }
         styleDistribution.setStyleMap(styleVehicleMap);
         return styleDistribution;

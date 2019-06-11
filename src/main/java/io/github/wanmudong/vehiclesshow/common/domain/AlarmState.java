@@ -17,7 +17,7 @@ public class AlarmState {
     private Map<Integer,Integer> alarmMap;
 
     public static AlarmState getRandom(StatisticsTotal st){
-        int malfunctionTotalNum = st.getMalfunctionTotalNum();
+        int malfunctionTotalNum = st.getMalfunctionTotalNum()/100;
         Random random = new Random();
         AlarmState as = new AlarmState();
 
@@ -26,8 +26,8 @@ public class AlarmState {
         for (int i = 1; i < 24; i++) {
             int symbol = random.nextInt(2);
             int currentVehicleNum = symbol==1?
-                    malfunctionTotalNum+random.nextInt(2000)
-                    :malfunctionTotalNum-random.nextInt(2000);
+                    malfunctionTotalNum+random.nextInt(20)
+                    :malfunctionTotalNum-random.nextInt(20);
             map.put(i,currentVehicleNum);
         }
         map.put(24,malfunctionTotalNum);

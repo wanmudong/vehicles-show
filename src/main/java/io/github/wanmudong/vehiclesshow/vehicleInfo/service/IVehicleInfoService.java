@@ -19,4 +19,6 @@ public interface IVehicleInfoService extends IService<VehicleInfo> {
     MyPageInfo listVehicles(String vin, int pageNo, int pageSize);
 
     List listVehicles(int pageNo, int pageSize);
+
+    List listVehiclesByProvince(String province, int pageNo, int pageSize);
 }

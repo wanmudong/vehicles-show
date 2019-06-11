@@ -34,44 +34,62 @@ public class UserDistribution {
      * <p>
      * 两个特别行政区：澳门特别行政区、香港特别行政区。
      */
-    public static final String[] PROVINCE = {"安徽", "浙江", "江苏", "上海", "北京", "广东",
+    public static final String[] PROVINCE_ALL = {"安徽", "上海", "北京", "浙江", "江苏", "广东",
             "湖北", "湖南", "河北", "山东", "辽宁", "黑龙江",
             "吉林", "陕西", "贵州", "四川", "山西", "海南",
             "台湾", "福建", "云南", "江西", "湖北", "河南",
             "甘肃", "重庆", "内蒙古", "天津", "广西", "西藏",
             "新疆", "澳门", "香港"
     };
+    public static final String[] PROVINCE = {"安徽", "上海", "北京", "浙江", "江苏", "其他"};
 
     /**
      * 安徽占三分之一，其余五省市占三分之一，剩余占其余三分之一
+     * 安徽3000，北京2500，上海1500 浙江 1500 江苏 1500 其他 2000
      * @param statisticsTotal
      * @return
      */
     public static UserDistribution getRandomUserDistribution(StatisticsTotal statisticsTotal) {
         int vehicleTotalNum = statisticsTotal.getVehicleTotalNum();
+        Random random = new Random();
         int onlineTotalNum = statisticsTotal.getOnlineTotalNum();
         double ratio = 1.0;
-        double innerRatio =  ratio/3;
+        double innerRatio =  ratio/4;
         UserDistribution ud = new UserDistribution();
+
+        int [] vehicleNum = {3011,2492,1555,1549,1358,2032};
+
         for (int i = 0; i < PROVINCE.length; i++) {
-            if (i < 1){
-                UserDistributionOfProvince up = UserDistributionOfProvince
-                        .getRandomProvince(PROVINCE[i],new Double(innerRatio*vehicleTotalNum).intValue());
 
-                ud.getCountry().add(up);
-            }else if (i<6){
-               double nowRatio = innerRatio * 0.2;
-                UserDistributionOfProvince up = UserDistributionOfProvince
-                        .getRandomProvince(PROVINCE[i],new Double(nowRatio*vehicleTotalNum).intValue());
+            UserDistributionOfProvince up = UserDistributionOfProvince
+                    .getRandomProvince(PROVINCE[i],vehicleNum[i]);
 
-                ud.getCountry().add(up);
-            }else {
-                double nowRatio = innerRatio * 0.037;
-                UserDistributionOfProvince up = UserDistributionOfProvince
-                        .getRandomProvince(PROVINCE[i],new Double(nowRatio*vehicleTotalNum).intValue());
+            ud.getCountry().add(up);
 
-                ud.getCountry().add(up);
-            }
+//            if (i == 0){
+//                UserDistributionOfProvince up = UserDistributionOfProvince
+//                        .getRandomProvince(PROVINCE[i],vehicleNum[i]);
+//
+//                ud.getCountry().add(up);
+//            }else if(i == 1){
+//                UserDistributionOfProvince up = UserDistributionOfProvince
+//                        .getRandomProvince(PROVINCE[i],vehicleNum[i]);
+//
+//                ud.getCountry().add(up);
+//
+//            }else if (i<6){
+//               double nowRatio = innerRatio * 0.2;
+//                UserDistributionOfProvince up = UserDistributionOfProvince
+//                        .getRandomProvince(PROVINCE[i],vehicleNum[i]);
+//
+//                ud.getCountry().add(up);
+//            }else {
+//                double nowRatio = innerRatio * 0.037;
+//                UserDistributionOfProvince up = UserDistributionOfProvince
+//                        .getRandomProvince(PROVINCE[i],new Double(nowRatio*vehicleTotalNum).intValue());
+//
+//                ud.getCountry().add(up);
+//            }
         }
 
 
@@ -108,18 +126,27 @@ class  UserDistributionOfProvince {
 //    public static  Double Online_To_Total_Ratio = 0.75;
 
     public static UserDistributionOfProvince getRandomProvince(String name, int totalNum) {
+
         Random random = new Random();
         UserDistributionOfProvince ud = new UserDistributionOfProvince();
         ud.setName(name);
         ud.setTotalNum(totalNum);
+
         double Online_To_Total_Ratio = 0.4 + random.nextDouble()/4;
         int onlineNum = (int) (totalNum * Online_To_Total_Ratio);
         double QQRatio = Math.random() * 0.6;
         double JieTuRatio = Math.random() * 0.5;
         double RuiHuRatio = 1 - QQRatio - JieTuRatio;
-        int QQNum = (int) (onlineNum * QQRatio);
-        int JieTuNum = (int) (onlineNum * JieTuRatio);
-        int RuiHuNum = (int) (onlineNum * RuiHuRatio);
+        /**
+         * 全部车辆数即瑞虎5车辆数，其余两个车型均为0
+         */
+//        int QQNum = (int) (onlineNum * QQRatio);
+//        int JieTuNum = (int) (onlineNum * JieTuRatio);
+//        int RuiHuNum = (int) (onlineNum * RuiHuRatio);
+        int QQNum = 0;
+        int JieTuNum = 0;
+        int RuiHuNum = onlineNum;
+
         ArrayList<Integer> modelList = new ArrayList<>();
         modelList.add(QQNum);
         modelList.add(JieTuNum);

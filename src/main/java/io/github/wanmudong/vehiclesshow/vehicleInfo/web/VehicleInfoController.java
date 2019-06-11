@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -152,7 +154,7 @@ public class VehicleInfoController {
 
     }
     @RequestMapping(value = "/drivingStyleAnalysis/province")
-    public ResultVO drivingStyleAnalysisOfProvince(String province){
+    public ResultVO drivingStyleAnalysisOfProvince(String province,@RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "10")int pageSize){
         try {
             /**
              * 二分之一是安徽，五分之一是浙江，五分之一是江苏，五分之一是上海，五分之一是北京，其余省市分剩下的五分之一
@@ -164,7 +166,11 @@ public class VehicleInfoController {
                 totalNum = (int) (totalNum*(0.2));
             }
             DrivingStyle drivingStyle = DrivingStyle.getRandomOfProvince(totalNum);
-            return ResultVO.success(drivingStyle);
+            List list = iVehicleInfoService.listVehiclesByProvince(province,pageNo,pageSize);
+            Map map = new HashMap<String,Object>();
+            map.put("drivingStyle",drivingStyle);
+            map.put("list",list);
+            return ResultVO.success(map);
         }catch (Exception e){
             return ResultVO.fail("访问失败，请检查！");
         }

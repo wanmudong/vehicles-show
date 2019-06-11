@@ -6,11 +6,13 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import io.github.wanmudong.vehiclesshow.common.utils.MyPageInfo;
 import io.github.wanmudong.vehiclesshow.vehicleInfo.entity.VehicleInfo;
+import io.github.wanmudong.vehiclesshow.vehicleInfo.entity.VehicleInfoDTO;
 import io.github.wanmudong.vehiclesshow.vehicleInfo.mapper.VehicleInfoMapper;
 import io.github.wanmudong.vehiclesshow.vehicleInfo.service.IVehicleInfoService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,14 +27,20 @@ import java.util.List;
 public class VehicleInfoServiceImpl extends ServiceImpl<VehicleInfoMapper, VehicleInfo> implements IVehicleInfoService {
 
     @Override
-    public MyPageInfo listVehicles(String vin, int pageNo, int pageSize) {
+    public MyPageInfo listVehicles(String vin,int pageNo, int pageSize) {
         PageHelper.startPage(pageNo,pageSize);
         EntityWrapper<VehicleInfo> ew = new EntityWrapper<>();
         ew.orderBy("id");
         if (StringUtils.isNotEmpty(vin)){
             ew.eq("vin",vin);
         }
-        PageInfo<VehicleInfo> pageInfo = new PageInfo<>(baseMapper.selectList(ew));
+        List<VehicleInfo>list = baseMapper.selectList(ew);
+        List<VehicleInfoDTO> infoDTOList = new ArrayList<>();
+        for(VehicleInfo vehicleInfo:list){
+            VehicleInfoDTO vehicleInfoDTO = vehicleInfo.doTODto();
+            infoDTOList.add(vehicleInfoDTO);
+        }
+        PageInfo<VehicleInfoDTO> pageInfo = new PageInfo<>(infoDTOList);
         return new MyPageInfo<>(pageInfo);
     }
 
@@ -41,7 +49,31 @@ public class VehicleInfoServiceImpl extends ServiceImpl<VehicleInfoMapper, Vehic
         PageHelper.startPage(pageNo,pageSize);
         EntityWrapper<VehicleInfo> ew = new EntityWrapper<>();
         ew.orderBy("id");
-        PageInfo<VehicleInfo> pageInfo = new PageInfo<>(baseMapper.selectList(ew));
+        List<VehicleInfo>list = baseMapper.selectList(ew);
+        List<VehicleInfoDTO> infoDTOList = new ArrayList<>();
+        for(VehicleInfo vehicleInfo:list){
+            VehicleInfoDTO vehicleInfoDTO = vehicleInfo.doTODto();
+            infoDTOList.add(vehicleInfoDTO);
+        }
+        PageInfo<VehicleInfoDTO> pageInfo = new PageInfo<>(infoDTOList);
+        return pageInfo.getList();
+    }
+
+    @Override
+    public List listVehiclesByProvince(String province, int pageNo, int pageSize) {
+        PageHelper.startPage(pageNo,pageSize);
+        EntityWrapper<VehicleInfo> ew = new EntityWrapper<>();
+        ew.orderBy("id");
+        if (StringUtils.isNotEmpty(province)){
+            ew.eq("area",province);
+        }
+        List<VehicleInfo>list = baseMapper.selectList(ew);
+        List<VehicleInfoDTO> infoDTOList = new ArrayList<>();
+        for(VehicleInfo vehicleInfo:list){
+            VehicleInfoDTO vehicleInfoDTO = vehicleInfo.doTODto();
+            infoDTOList.add(vehicleInfoDTO);
+        }
+        PageInfo<VehicleInfoDTO> pageInfo = new PageInfo<>(infoDTOList);
         return pageInfo.getList();
     }
 }

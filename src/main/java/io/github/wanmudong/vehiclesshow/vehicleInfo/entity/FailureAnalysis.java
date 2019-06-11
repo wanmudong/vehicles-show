@@ -25,8 +25,10 @@ public class FailureAnalysis {
     public static FailureAnalysis getRandom(List faultVehicleList){
         FailureAnalysis failureAnalysis = new FailureAnalysis();
 
-        failureAnalysis.setFaultDistribution(FaultDistribution.getRandom());
-        failureAnalysis.setFaultOverview(FaultOverview.getRandom());
+        FaultOverview faultOverview = FaultOverview.getRandom();
+
+        failureAnalysis.setFaultDistribution(FaultDistribution.getRandom(faultOverview));
+        failureAnalysis.setFaultOverview(faultOverview);
         failureAnalysis.setFaultVehicleList(faultVehicleList);
 
         return failureAnalysis;
@@ -55,24 +57,28 @@ class FaultOverview{
      */
     private int tireSystemFailure;
     /**
-     * 制动器系统故障
+     * 辅助系统故障
      */
-    private int brakeSystemFailure;
+    private int assistantSystemFailure;
 
     public static FaultOverview getRandom(){
         FaultOverview faultOverview = new FaultOverview();
         Random random = new Random();
 
-        int totalFailure = 250000 + random.nextInt(10000);
+        int totalFailure = 25000 + random.nextInt(1000);
         faultOverview.setTotalFailure(totalFailure);
-        int engineSystemFailure = 60000 + random.nextInt(2500);
+        int engineSystemFailure = (int) (totalFailure * 0.1);
+//        int engineSystemFailure = 60000 + random.nextInt(2500);
         faultOverview.setEngineSystemFailure(engineSystemFailure);
-        int brokingSystemFailure = 60000 + random.nextInt(2500);
+        int brokingSystemFailure =  (int) (totalFailure * 0.2);
+//        int brokingSystemFailure = 60000 + random.nextInt(2500);
         faultOverview.setBrokingSystemFailure(brokingSystemFailure);
-        int tireSystemFailure = 60000 + random.nextInt(2500);
+        int tireSystemFailure = (int) (totalFailure * 0.4);
+//        int tireSystemFailure = 60000 + random.nextInt(2500);
         faultOverview.setTireSystemFailure(tireSystemFailure);
-        int brakeSystemFailure = 60000 + random.nextInt(2500);
-        faultOverview.setBrakeSystemFailure(brakeSystemFailure);
+        int assistantSystemFailure = (int) (totalFailure * 0.3);
+//        int brakeSystemFailure = 60000 + random.nextInt(2500);
+        faultOverview.setAssistantSystemFailure(assistantSystemFailure);
 
         return faultOverview;
     }
@@ -90,16 +96,23 @@ class FaultDistribution{
     private static final int VEHICLE_FAULT_NUM = 4;
 //    private static final String [] VehicleFaultArray={"发动机系统故障","制动系统故障","轮胎系统故障","转速器系统故障"};
 
-    public static FaultDistribution getRandom(){
+    public static FaultDistribution getRandom(FaultOverview faultOverview){
         FaultDistribution faultDistribution = new FaultDistribution();
         Map<Integer,Map<Integer,Integer>> faultVehicleMap = new HashMap<>(16);
         Random random = new Random();
 
         for (int i = 0; i < VEHICLE_MODELS_NUM; i++) {
             Map<Integer,Integer> faultMap = new HashMap<>(16);
-            for (int j = 0; j < VEHICLE_FAULT_NUM; j++) {
-                int faultNum = 14000 + random.nextInt(2000);
-                faultMap.put(j,faultNum);
+            if (i == 0){
+//                for (int j = 0; j < VEHICLE_FAULT_NUM; j++) {
+//                        int faultNum = 1400 + random.nextInt(200);
+//                        faultMap.put(j,faultNum);
+//
+//                }
+                faultMap.put(0,faultOverview.getEngineSystemFailure());
+                faultMap.put(1,faultOverview.getBrokingSystemFailure());
+                faultMap.put(2,faultOverview.getTireSystemFailure());
+                faultMap.put(3,faultOverview.getAssistantSystemFailure());
             }
             faultVehicleMap.put(i,faultMap);
         }
