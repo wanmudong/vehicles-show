@@ -41,7 +41,7 @@ public class UserDistribution {
             "甘肃", "重庆", "内蒙古", "天津", "广西", "西藏",
             "新疆", "澳门", "香港"
     };
-    public static final String[] PROVINCE = {"安徽", "上海", "北京", "浙江", "江苏", "其他"};
+    public static final String[] PROVINCE = {"安徽", "上海", "北京", "浙江", "江苏","广东", "其他"};
 
     /**
      * 安徽占三分之一，其余五省市占三分之一，剩余占其余三分之一
@@ -148,11 +148,10 @@ class  UserDistributionOfProvince {
         int RuiHuNum = onlineNum;
 
         ArrayList<Integer> modelList = new ArrayList<>();
+        modelList.add(RuiHuNum);
         modelList.add(QQNum);
         modelList.add(JieTuNum);
-        modelList.add(RuiHuNum);
         ud.setNumberOfModelsOnline(modelList);
-
         ud.setOnlineNum(onlineNum);
         ud.setOfflineNum(totalNum - onlineNum);
 
