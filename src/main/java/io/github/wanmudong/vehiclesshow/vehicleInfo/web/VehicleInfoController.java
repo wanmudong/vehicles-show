@@ -34,7 +34,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2019-04-29
  */
 @RestController
-@RequestMapping("/vehicleInfo/vehicle-info")
+@RequestMapping("/vehicleInfo/")
 public class VehicleInfoController {
 
     @Resource

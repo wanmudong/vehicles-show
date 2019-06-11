@@ -30,6 +30,10 @@ public class CurrentVehicleState {
      * 总油量 总行驶里程的 0.06-0.09 倍
      */
     private  int totalOil;
+    /**
+     * 总报文 180
+     */
+    private  int totalMessage;
 
     /////////////////////////////////
     /**
@@ -158,6 +162,8 @@ public class CurrentVehicleState {
         currentVehicleState.setTotalTravelTime(totalTravelTime);
         int totalOil = 300 + random.nextInt(600);
         currentVehicleState.setTotalOil(totalOil);
+        int totalMessage = 100 + random.nextInt(50);
+        currentVehicleState.setTotalMessage(totalMessage);
 
         String symbol = random.nextInt(2) == 1?"+":"-";
         String verticalAcceleration = symbol + random.nextInt(24)/10.0;

@@ -39,4 +39,8 @@ public class VehicleInfoDTO {
      * 故障数（30-50）
      */
     private Integer numberOfFailures;
+    /**
+     * 报文上传时间
+     */
+    private String date;
 }

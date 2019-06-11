@@ -1,6 +1,10 @@
 package io.github.wanmudong.vehiclesshow.common.domain;
 
+import io.github.wanmudong.vehiclesshow.vehicleInfo.service.IVehicleInfoService;
 import lombok.Data;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author ：wanmudong
@@ -9,6 +13,7 @@ import lombok.Data;
  */
 @Data
 public class LargeScreenMonitoring {
+
 
     private StatisticsTotal statisticsTotal;
 
@@ -21,6 +26,8 @@ public class LargeScreenMonitoring {
     private AccessToInternational accessToInternational;
 
     private FaultManagementAnalysis faultManagementAnalysis;
+
+    private List MessageUploadList;
 
     public static LargeScreenMonitoring getRandom(){
         LargeScreenMonitoring lm = new LargeScreenMonitoring();

@@ -45,7 +45,7 @@ public class VehicleInfoServiceImpl extends ServiceImpl<VehicleInfoMapper, Vehic
     }
 
     @Override
-    public List listVehicles(int pageNo, int pageSize) {
+    public List<VehicleInfoDTO> listVehicles(int pageNo, int pageSize) {
         PageHelper.startPage(pageNo,pageSize);
         EntityWrapper<VehicleInfo> ew = new EntityWrapper<>();
         ew.orderBy("id");

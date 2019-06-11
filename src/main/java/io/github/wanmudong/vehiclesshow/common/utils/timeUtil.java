@@ -15,7 +15,7 @@ public class timeUtil {
      */
     public static int getSecondTimeNow(){
 
-        String timestamp = String.valueOf(new Date().getTime()/1000);
+        String timestamp = String.valueOf(System.currentTimeMillis()/1000);
         return Integer.valueOf(timestamp);
     }
 
