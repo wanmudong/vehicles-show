@@ -10,7 +10,7 @@
     </parent>
     <groupId>io.github.wanmudong</groupId>
     <artifactId>vehicles-show</artifactId>
-    <version>0.0.8-SNAPSHOT</version>
+    <version>0.0.9-SNAPSHOT</version>
     <name>vehicles-show</name>
     <description>vehicle-show-random-version</description>
 
@@ -61,6 +61,11 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.5</version>
         </dependency>
+        <!--&lt;!&ndash;返回静态页面&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>

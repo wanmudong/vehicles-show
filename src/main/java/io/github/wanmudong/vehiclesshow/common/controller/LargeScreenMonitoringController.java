@@ -15,7 +15,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(value = "/largeScreenMonitoring")
+@RequestMapping(value = "/api/largeScreenMonitoring")
 public class LargeScreenMonitoringController {
     @Resource
     private IVehicleInfoService iVehicleInfoService;
