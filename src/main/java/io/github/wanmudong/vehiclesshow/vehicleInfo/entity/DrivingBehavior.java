@@ -115,11 +115,13 @@ public class DrivingBehavior {
             if(i>22 || i<6){
                 int [] speedArr = {0,0};
                 userDrivingSpeed.put(i+1,speedArr);
+
+            }else {
+                int maxSpeed = 70 + random.nextInt(20);
+                int averageSpeed = 50 + random.nextInt(20);
+                int[] speedArr = {maxSpeed, averageSpeed};
+                userDrivingSpeed.put(i + 1, speedArr);
             }
-            int maxSpeed = 70 + random.nextInt(20);
-            int averageSpeed = 50 + random.nextInt(20);
-            int [] speedArr = {maxSpeed,averageSpeed};
-            userDrivingSpeed.put(i+1,speedArr);
         }
         drivingBehavior.setUserDrivingSpeed(userDrivingSpeed);
 
