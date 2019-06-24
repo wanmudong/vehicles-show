@@ -27,7 +27,7 @@ public class HealthVehicleState {
      */
     private BrokingSystemFault brokingSystemFault;
     /**
-     * 变速器系统故障
+     * 辅助系统故障
      */
     private TechometerSystemFault techometerSystemFault;
 
@@ -534,6 +534,7 @@ class TechometerSystemFault{
      * 变速箱故障指示
      */
     private GearboxFaultIndication gearboxFaultIndication;
+
     @JsonIgnore
     private static final Integer MAX_NUM = 3;
     @Data

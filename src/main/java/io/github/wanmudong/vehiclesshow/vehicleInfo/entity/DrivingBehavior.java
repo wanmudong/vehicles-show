@@ -112,6 +112,10 @@ public class DrivingBehavior {
 
         Map<Integer,int[]> userDrivingSpeed = new ConcurrentHashMap<>(24);
         for (int i = 0; i < 24; i++) {
+            if(i>22 || i<6){
+                int [] speedArr = {0,0};
+                userDrivingSpeed.put(i+1,speedArr);
+            }
             int maxSpeed = 70 + random.nextInt(20);
             int averageSpeed = 50 + random.nextInt(20);
             int [] speedArr = {maxSpeed,averageSpeed};
